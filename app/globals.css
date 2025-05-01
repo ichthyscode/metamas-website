@@ -1,0 +1,250 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply tracking-tight;
+  }
+
+  h1 {
+    @apply text-3xl font-bold md:text-4xl lg:text-5xl;
+  }
+
+  h2 {
+    @apply text-2xl font-bold md:text-3xl lg:text-4xl;
+  }
+
+  h3 {
+    @apply text-xl font-bold md:text-2xl;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-gradient-full text-white shadow-lg shadow-brand-blue-dark/20 hover:shadow-brand-red-dark/20 hover:scale-105;
+  }
+
+  .btn-secondary {
+    @apply btn border border-white/20 bg-white/5 text-white backdrop-blur hover:bg-white/10 hover:border-brand-cyan/30 hover:scale-105;
+  }
+
+  .card {
+    @apply relative overflow-hidden rounded-2xl bg-white/5 p-8 backdrop-blur transition-all duration-300 hover:bg-white/10 hover:shadow-lg border border-transparent;
+  }
+
+  .card-hover-orange {
+    @apply hover:shadow-brand-orange/10 hover:border-brand-orange/20;
+  }
+
+  .card-hover-red {
+    @apply hover:shadow-brand-red/10 hover:border-brand-red/20;
+  }
+
+  .card-hover-blue {
+    @apply hover:shadow-brand-blue/10 hover:border-brand-blue/20;
+  }
+
+  .card-hover-cyan {
+    @apply hover:shadow-brand-cyan/10 hover:border-brand-cyan/20;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  /* Text gradients */
+  .text-gradient-full {
+    @apply bg-gradient-to-r from-brand-orange via-brand-red via-brand-blue to-brand-cyan bg-clip-text text-transparent;
+  }
+
+  .text-gradient-warm {
+    @apply bg-gradient-to-r from-brand-orange to-brand-red bg-clip-text text-transparent;
+  }
+
+  .text-gradient-cool {
+    @apply bg-gradient-to-r from-brand-blue to-brand-cyan bg-clip-text text-transparent;
+  }
+
+  .text-gradient-contrast {
+    @apply bg-gradient-to-r from-brand-red to-brand-blue bg-clip-text text-transparent;
+  }
+
+  .text-gradient-ends {
+    @apply bg-gradient-to-r from-brand-orange to-brand-cyan bg-clip-text text-transparent;
+  }
+
+  /* Background gradients */
+  .bg-brand-gradient-full {
+    @apply bg-gradient-to-r from-brand-orange via-brand-red via-brand-blue to-brand-cyan;
+  }
+
+  .bg-brand-gradient-warm {
+    @apply bg-gradient-to-r from-brand-orange to-brand-red;
+  }
+
+  .bg-brand-gradient-cool {
+    @apply bg-gradient-to-r from-brand-blue to-brand-cyan;
+  }
+
+  .bg-brand-gradient-contrast {
+    @apply bg-gradient-to-r from-brand-red to-brand-blue;
+  }
+
+  /* Animated gradients */
+  .bg-brand-gradient-animate {
+    @apply bg-gradient-to-r from-brand-orange via-brand-red via-brand-blue to-brand-cyan bg-size-200 animate-gradient-x;
+  }
+
+  /* Subtle background gradients */
+  .bg-brand-gradient-subtle-full {
+    @apply bg-gradient-to-r from-brand-orange/10 via-brand-red/10 via-brand-blue/10 to-brand-cyan/10;
+  }
+
+  .bg-brand-gradient-subtle-warm {
+    @apply bg-gradient-to-r from-brand-orange/10 to-brand-red/10;
+  }
+
+  .bg-brand-gradient-subtle-cool {
+    @apply bg-gradient-to-r from-brand-blue/10 to-brand-cyan/10;
+  }
+
+  /* Border gradients */
+  .border-brand-gradient-full {
+    @apply border border-transparent bg-clip-border bg-gradient-to-r from-brand-orange via-brand-red via-brand-blue to-brand-cyan;
+  }
+
+  .border-brand-gradient-warm {
+    @apply border border-transparent bg-clip-border bg-gradient-to-r from-brand-orange to-brand-red;
+  }
+
+  .border-brand-gradient-cool {
+    @apply border border-transparent bg-clip-border bg-gradient-to-r from-brand-blue to-brand-cyan;
+  }
+
+  /* Glow effects */
+  .glow-orange {
+    @apply shadow-[0_0_15px_rgba(255,122,0,0.5)];
+  }
+
+  .glow-red {
+    @apply shadow-[0_0_15px_rgba(255,0,102,0.5)];
+  }
+
+  .glow-blue {
+    @apply shadow-[0_0_15px_rgba(0,102,255,0.5)];
+  }
+
+  .glow-cyan {
+    @apply shadow-[0_0_15px_rgba(0,204,255,0.5)];
+  }
+
+  /* Background sizes for animated gradients */
+  .bg-size-200 {
+    background-size: 200% 200%;
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+
+  .shimmer::after {
+    @apply absolute inset-0 -translate-x-full;
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0,
+      rgba(255, 255, 255, 0.05) 20%,
+      rgba(255, 255, 255, 0.1) 60%,
+      rgba(255, 255, 255, 0)
+    );
+    animation: shimmer 2s infinite;
+    content: "";
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Section transitions */
+section {
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Gradient animations */
+.bg-gradient-animate {
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Improved scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid #00ccff;
+  outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(0, 102, 255, 0.3);
+  color: white;
+}
